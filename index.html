@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRENDRE: O Jogo do Francês</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-background: #0D0F16;
+            --card-bg: #1A1D2B;
+            --gradient-start: #4A1D9E;
+            --gradient-end: #1E1A53;
+            --accent-color: #B28CFF;
+            --text-color: #E2E8F0;
+            --title-font: 'Bruno Ace SC', sans-serif;
+            --body-font: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-background);
+            color: var(--text-color);
+            font-family: var(--body-font);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .gradient-background {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            min-height: 100vh;
+        }
+
+        .gaming-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 2px solid transparent;
+        }
+
+        .gaming-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            border-color: var(--accent-color);
+        }
+
+        .gaming-button {
+            background: linear-gradient(90deg, #6b46c1 0%, #a561ef 100%);
+            border-radius: 9999px;
+            padding: 0.75rem 1.5rem;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .gaming-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+        }
+
+        .modal {
+            background: rgba(13, 15, 22, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--accent-color);
+        }
+    </style>
+</head>
+<body class="gradient-background">
+
+    <!-- Header (Netflix-like) -->
+    <header class="p-6 flex justify-between items-center z-10">
+        <div class="flex items-center space-x-4">
+            <svg class="w-10 h-10 text-accent-color" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L2 22h20L12 2zm0 14.5L15.5 10H8.5L12 16.5z"/>
+            </svg>
+            <h1 class="text-3xl font-bold font-title uppercase tracking-widest text-white">PRENDRE: O JOGO</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center border-2 border-accent-color cursor-pointer">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A11.052 11.052 0 0112 15c2.348 0 4.505.748 6.379 2.062M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-title text-white leading-tight mb-4">Bem-vindo(a) à sua Jornada Francesa</h2>
+            <p class="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">Explore as diferentes formas de usar o verbo mais comum do francês em situações do dia a dia. Escolha um "episódio" para começar.</p>
+        </div>
+
+        <!-- Episode Cards Section -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+            <!-- Card 1: Presente (Present Tense) -->
+            <div class="gaming-card p-6 flex flex-col items-center text-center">
+                <img src="https://placehold.co/400x250/333/fff?text=Presente" alt="Presente" class="rounded-lg mb-4 w-full h-40 object-cover">
+                <h3 class="text-2xl font-bold font-title text-accent-color mb-2">Episódio 1: Le présent</h3>
+                <p class="text-gray-400 flex-grow mb-4">Aprenda a dizer que você está pegando algo no momento. Frases como "Eu pego o ônibus" ou "Nós pegamos um táxi".</p>
+                <button onclick="showLesson(1)" class="gaming-button">Começar</button>
+            </div>
+
+            <!-- Card 2: Passé Composé (Past Tense) -->
+            <div class="gaming-card p-6 flex flex-col items-center text-center">
+                <img src="https://placehold.co/400x250/333/fff?text=Passado" alt="Passado" class="rounded-lg mb-4 w-full h-40 object-cover">
+                <h3 class="text-2xl font-bold font-title text-accent-color mb-2">Episódio 2: Passé Composé</h3>
+                <p class="text-gray-400 flex-grow mb-4">Descubra como expressar ações que já aconteceram. "Eu peguei o ônibus" ou "Ela pegou um táxi".</p>
+                <button onclick="showLesson(2)" class="gaming-button">Começar</button>
+            </div>
+
+            <!-- Card 3: Futur Simple (Simple Future) -->
+            <div class="gaming-card p-6 flex flex-col items-center text-center">
+                <img src="https://placehold.co/400x250/333/fff?text=Futuro" alt="Futuro" class="rounded-lg mb-4 w-full h-40 object-cover">
+                <h3 class="text-2xl font-bold font-title text-accent-color mb-2">Episódio 3: Futur Simple</h3>
+                <p class="text-gray-400 flex-grow mb-4">Domine o uso do verbo 'prendre' para expressar o futuro. "Eu pegarei o trem" ou "Você pegará um táxi".</p>
+                <button onclick="showLesson(3)" class="gaming-button">Começar</button>
+            </div>
+
+            <!-- Card 4: Expressions -->
+            <div class="gaming-card p-6 flex flex-col items-center text-center">
+                <img src="https://placehold.co/400x250/333/fff?text=Expressoes" alt="Expressoes" class="rounded-lg mb-4 w-full h-40 object-cover">
+                <h3 class="text-2xl font-bold font-title text-accent-color mb-2">Episódio 4: Expressões</h3>
+                <p class="text-gray-400 flex-grow mb-4">Aprenda a construir frases com expressões comuns usando 'prendre'. Por exemplo, "Eu pego o ônibus" ou "Nós pegamos o metrô".</p>
+                <button onclick="showLesson(4)" class="gaming-button">Começar</button>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Modal for Lesson -->
+    <div id="lesson-modal" class="modal fixed inset-0 flex items-center justify-center p-4 hidden z-20">
+        <div class="modal-content w-full max-w-2xl p-8 text-center relative">
+            <button onclick="hideLesson()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div id="lesson-content">
+                <!-- Content will be injected here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const lessons = {
+            1: {
+                title: "Episódio 1: Le présent",
+                scenarios: [
+                    { type: "fill-in-the-blank", question: "Você está pegando o trem. Complete a frase: 'Je ___ le train.'", hint: "Conjugue o verbo 'prendre' para 'eu'.", correctAnswer: "prends", fullSentence: "Je ___ le train.", translation: "Eu pego o trem." },
+                    { type: "fill-in-the-blank", question: "Nós estamos pegando o ônibus. Complete a frase: 'Nous ___ le bus.'", hint: "Conjugue o verbo 'prendre' para 'nós'.", correctAnswer: "prenons", fullSentence: "Nous ___ le bus.", translation: "Nós pegamos o ônibus." },
+                    { type: "fill-in-the-blank", question: "Ele está pegando o metrô. Complete a frase: 'Il ___ le métro.'", hint: "Conjugue o verbo 'prendre' para 'ele'.", correctAnswer: "prend", fullSentence: "Il ___ le métro.", translation: "Ele pega o metrô." },
+                    { type: "fill-in-the-blank", question: "Eles estão pegando as fotos. Complete a frase: 'Ils ___ les photos.'", hint: "Conjugue o verbo 'prendre' para 'eles'.", correctAnswer: "prennent", fullSentence: "Ils ___ les photos.", translation: "Eles pegam as fotos." },
+                    { type: "fill-in-the-blank", question: "Você está pegando um livro. Complete a frase: 'Tu ___ un livre.'", hint: "Conjugue o verbo 'prendre' para 'você'.", correctAnswer: "prends", fullSentence: "Tu ___ un livre.", translation: "Você pega um livro." },
+                    { type: "fill-in-the-blank", question: "Vocês estão pegando o taxi. Complete a frase: 'Vous ___ un taxi.'", hint: "Conjugue o verbo 'prendre' para 'vocês'.", correctAnswer: "prenez", fullSentence: "Vous ___ un taxi.", translation: "Vocês pegam um táxi." }
+                ]
+            },
+            2: {
+                title: "Episódio 2: Passé Composé",
+                scenarios: [
+                    { type: "fill-in-the-blank", question: "Ele pegou o metrô. Complete a frase: 'Il a ___ le métro.'", hint: "Use o particípio passado do verbo 'prendre'.", correctAnswer: "pris", fullSentence: "Il a ___ le métro.", translation: "Ele pegou o metrô." },
+                    { type: "fill-in-the-blank", question: "Nós pegamos o ônibus. Complete a frase: 'Nous avons ___ le bus.'", hint: "Use o particípio passado do verbo 'prendre'.", correctAnswer: "pris", fullSentence: "Nous avons ___ le bus.", translation: "Nós pegamos o ônibus." },
+                    { type: "fill-in-the-blank", question: "Eu peguei o trem. Complete a frase: 'J'ai ___ le train.'", hint: "Use o particípio passado do verbo 'prendre'.", correctAnswer: "pris", fullSentence: "J'ai ___ le train.", translation: "Eu peguei o trem." },
+                    { type: "fill-in-the-blank", question: "Ela pegou o guarda-chuva. Complete a frase: 'Elle a ___ son parapluie.'", hint: "Use o particípio passado do verbo 'prendre'.", correctAnswer: "pris", fullSentence: "Elle a ___ son parapluie.", translation: "Ela pegou o guarda-chuva." },
+                    { type: "fill-in-the-blank", question: "Você pegou um taxi. Complete a frase: 'Tu as ___ un taxi.'", hint: "Use o particípio passado do verbo 'prendre'.", correctAnswer: "pris", fullSentence: "Tu as ___ un taxi.", translation: "Você pegou um táxi." }
+                ]
+            },
+            3: {
+                title: "Episódio 3: Futur Simple",
+                scenarios: [
+                    { type: "fill-in-the-blank", question: "Ele pegará um táxi. Complete a frase: 'Il ___ un taxi.'", hint: "Conjugue o verbo 'prendre' para o futuro simples para 'ele'.", correctAnswer: "prendra", fullSentence: "Il ___ un taxi.", translation: "Ele pegará um táxi." },
+                    { type: "fill-in-the-blank", question: "Nós pegaremos o avião. Complete a frase: 'Nous ___ l'avion.'", hint: "Conjugue o verbo 'prendre' para o futuro simples para 'nós'.", correctAnswer: "prendrons", fullSentence: "Nous ___ l'avion.", translation: "Nós pegaremos o avião." },
+                    { type: "fill-in-the-blank", question: "Eu pegarei o trem. Complete a frase: 'Je ___ le train.'", hint: "Conjugue o verbo 'prendre' para o futuro simples para 'eu'.", correctAnswer: "prendrai", fullSentence: "Je ___ le train.", translation: "Eu pegarei o trem." },
+                    { type: "fill-in-the-blank", question: "Vocês pegarão um café. Complete a frase: 'Vous ___ un café.'", hint: "Conjugue o verbo 'prendre' para o futuro simples para 'vocês'.", correctAnswer: "prendrez", fullSentence: "Vous ___ un café.", translation: "Vocês pegarão um café." },
+                    { type: "fill-in-the-blank", question: "Eles pegarão as malas. Complete a frase: 'Ils ___ les valises.'", hint: "Conjugue o verbo 'prendre' para o futuro simples para 'eles'.", correctAnswer: "prendront", fullSentence: "Ils ___ les valises.", translation: "Eles pegarão as malas." }
+                ]
+            },
+            4: {
+                title: "Episódio 4: Expressões",
+                scenarios: [
+                    { type: "fill-in-the-blank", question: "Para tomar café da manhã, complete a frase: 'Je ___ mon petit-déjeuner.'", hint: "Conjugue o verbo 'prendre' para 'eu'.", correctAnswer: "prends", fullSentence: "Je ___ mon petit-déjeuner.", translation: "Eu tomo meu café da manhã." },
+                    { type: "fill-in-the-blank", question: "Para tomar uma decisão, complete a frase: 'Nous ___ une décision.'", hint: "Conjugue o verbo 'prendre' para 'nós'.", correctAnswer: "prenons", fullSentence: "Nous ___ une décision.", translation: "Nós tomamos uma decisão." },
+                    { type: "fill-in-the-blank", question: "Para tomar um táxi, complete a frase: 'Ils ___ un taxi.'", hint: "Conjugue o verbo 'prendre' para 'eles'.", correctAnswer: "prennent", fullSentence: "Ils ___ un taxi.", translation: "Eles pegam um táxi." },
+                    { type: "fill-in-the-blank", question: "Para tomar banho, complete a frase: 'Tu ___ une douche.'", hint: "Conjugue o verbo 'prendre' para 'você'.", correctAnswer: "prends", fullSentence: "Tu ___ une douche.", translation: "Você toma um banho." },
+                    { type: "fill-in-the-blank", question: "Para tomar o ar, complete a frase: 'Vous ___ l'air.'", hint: "Conjugue o verbo 'prendre' para 'vocês'.", correctAnswer: "prenez", fullSentence: "Vous ___ l'air.", translation: "Vocês tomam ar." }
+                ]
+            }
+        };
+
+        let currentLessonId = null;
+        let currentScenarioIndex = 0;
+
+        function showLesson(lessonId) {
+            currentLessonId = lessonId;
+            currentScenarioIndex = 0;
+            document.getElementById('lesson-modal').classList.remove('hidden');
+            renderScenario();
+        }
+
+        function hideLesson() {
+            document.getElementById('lesson-modal').classList.add('hidden');
+        }
+
+        function renderScenario() {
+            const lesson = lessons[currentLessonId];
+            if (!lesson) return;
+
+            const scenario = lesson.scenarios[currentScenarioIndex];
+            if (!scenario) {
+                // End of lesson
+                document.getElementById('lesson-content').innerHTML = `
+                    <h2 class="text-4xl font-bold font-title text-accent-color mb-4">Parabéns!</h2>
+                    <p class="text-lg text-gray-300 mb-6">Você completou todas as atividades do episódio "${lesson.title}".</p>
+                    <button onclick="hideLesson()" class="gaming-button">Voltar para o Menu</button>
+                `;
+                return;
+            }
+
+            let questionHtml = '';
+            let sentenceToDisplay = '';
+            
+            if (scenario.type === 'fill-in-the-blank') {
+                const parts = scenario.fullSentence.split('___');
+                // Handles one or more blanks
+                const blankPart = parts.slice(1, -1).map(p => ` <span class="text-accent-color italic">___</span> ${p.trim()}`).join('')
+                sentenceToDisplay = `<p class="text-2xl text-white font-semibold">${parts[0].trim()}<span class="text-accent-color italic">___</span>${blankPart} ${parts[parts.length - 1].trim()}</p>`;
+                questionHtml = `<p class="text-xl mb-4 text-gray-300">${scenario.question}</p>`;
+            } else { // full-sentence
+                sentenceToDisplay = `<p class="text-2xl text-white font-semibold">${scenario.question}</p>`;
+                questionHtml = `<p class="text-xl mb-4 text-gray-300">Traduza para o francês:</p>`;
+            }
+
+            const html = `
+                <h2 class="text-4xl font-bold font-title text-accent-color mb-4">${lesson.title}</h2>
+                <div class="bg-gray-800 p-6 rounded-lg text-left mb-6">
+                    ${questionHtml}
+                    ${sentenceToDisplay}
+                </div>
+                <div class="flex flex-col items-center space-y-4">
+                    <input type="text" id="answer-input" class="w-full max-w-xs p-3 text-center bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-accent-color" placeholder="Sua resposta aqui...">
+                    <button id="check-btn" onclick="checkAnswer()" class="gaming-button">Verificar</button>
+                </div>
+                <div id="feedback-message" class="mt-4 text-center"></div>
+                <button id="next-btn" onclick="nextScenario()" class="gaming-button mt-6 hidden">Próximo</button>
+            `;
+            document.getElementById('lesson-content').innerHTML = html;
+            document.getElementById('answer-input').focus();
+        }
+
+        function normalizeText(text) {
+            return text.toLowerCase().trim().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?'’]/g, "").replace(/\s{2,}/g, " ");
+        }
+
+        function checkAnswer() {
+            const input = document.getElementById('answer-input');
+            const feedback = document.getElementById('feedback-message');
+            const nextBtn = document.getElementById('next-btn');
+            const checkBtn = document.getElementById('check-btn');
+            const lesson = lessons[currentLessonId];
+            const scenario = lesson.scenarios[currentScenarioIndex];
+
+            if (!input.value.trim()) {
+                feedback.innerHTML = `<p class="text-red-500 font-bold text-xl">Por favor, digite sua resposta.</p>`;
+                return;
+            }
+
+            let isCorrect = normalizeText(input.value) === normalizeText(scenario.correctAnswer);
+
+            if (isCorrect) {
+                feedback.innerHTML = `<p class="text-green-500 font-bold text-xl">Correto!</p>
+                                      <p class="text-gray-400 mt-2">Resposta correta: <span class="text-white bg-green-700 rounded-lg p-1.5">${scenario.correctAnswer}</span></p>
+                                      <p class="text-gray-400 mt-2">Tradução: ${scenario.translation}</p>`;
+                nextBtn.classList.remove('hidden');
+                checkBtn.classList.add('hidden');
+            } else {
+                feedback.innerHTML = `<p class="text-red-500 font-bold text-xl">Ops, tente novamente.</p>
+                                      <p class="text-gray-400 mt-2">Dica: ${scenario.hint}</p>`;
+            }
+        }
+
+        function nextScenario() {
+            currentScenarioIndex++;
+            renderScenario();
+        }
+    </script>
+</body>
+</html>
